@@ -1,0 +1,4 @@
+# Vicky is afraid of bugs.
+
+User-agent: *
+Disallow: /

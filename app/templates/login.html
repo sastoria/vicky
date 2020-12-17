@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!--    <link rel="stylesheet" href="static/css/index.css">-->
+    <style>
+        .black {background-color: black;}
+        body {background-color: black;}
+        input[type=text],
+        input[type=password] {
+            border: 2px solid black;
+            color: white;}
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: black ;
+            color: white;}
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            border: 2px solid black;
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+            transition: background-color 5000s ease-in-out 0s;}
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        textarea:-webkit-autofill:hover,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus{
+            background-color: black ;}
+        #sign_in_box {padding-top: 225px;}
+        #content {;padding-top:120px;padding-left:60px;}
+        #blog {background-color: black;color: white;border: 4px solid;}
+<!--        #remember {padding-left: 15px;}-->
+    </style>
+    <div class="container-fluid">
+    <!--    <div class="header">------------</div>-->
+        <div class="row">
+            <div class="col-1 text-center"></div>
+            <div id="content" class="col-6 ">
+                <div id="blog" class="alert alert-light"  role="alert">
+                    <h4 class="alert-heading">Demo</h4>
+                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                    <hr>
+                    <p class="mb-1">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                </div>
+            </div>
+            <div class="col-1 text-center"></div>
+            <div id="sign_in_box" class="col-3 text-center">
+                <div>
+                    {% include '_messages.html' %}
+                </div>
+                <form  method="post" enctype="multipart/form-data">
+    <!--                {{ form.csrf_token }}-->
+                    {{ form.hidden_tag() }}
+                    <fieldset class="">
+                        <legend class="text-center h3 text-white p-1">Sign in</legend>
+                        <div class="col">
+                            <div class="col">
+                                <div class="col">
+                                    {% from "_form_maker.html" import render_field %}
+                                    {{ render_field(form.email, class="form-control black", placeholder="Email") }}
+                                    {{ render_field(form.password, class="form-control black", placeholder="Password") }}
+                                    {{ render_field(form.submit, class="btn btn-outline-danger mt-2 btn-sm", value="Login") }}
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <small class="text-muted">
+                        <small>
+<!--                           {{ render_field(form.remember, front_text="Remember Me ") }}-->
+                            Need An Account?<a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a><br>
+                            <a href="#">Forgot Password?</a>
+                        </small>
+                    </small>
+                </form>
+            </div>
+            <div class="col-1 text-center"></div>
+        </div>
+    </div>
+
+{% endblock content %}

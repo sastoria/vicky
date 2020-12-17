@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <style>
+        body {background-color: black;}
+    </style>
+    <br><br>
+    <h3 class="text-center">
+        {% include '_messages.html' %}
+        {% from "_form_maker.html" import render_field %}
+    </h3>
+    <br><br><br>
+    <h1 class="text-center text-white">
+    </h1><br><br>
+    <div class="text-center">
+     <a href="{{ url_for('add_customer') }}" class="btn btn-outline-light ">create customer</a>
+     <a href="{{ url_for('create') }}" class="btn btn-outline-dark ">create product</a>
+     <a href="{{ url_for('create') }}" class="btn btn-outline-dark ">create order</a>
+     <a href="{{ url_for('create') }}" class="btn btn-outline-dark ">create category</a>
+     <a href="{{ url_for('add_tag') }}" class="btn btn-outline-dark ">create tag</a>
+    </div>
+
+{% endblock content %}

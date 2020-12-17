@@ -1,0 +1,16 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <style>
+            #sign_in_box {padding-top: 189px;}
+            #flash {background-color: black;}
+        </style>
+        {% for category, message in messages %}
+            <div id="flash" class="text-{{ category }}">
+               <small>{{ message }}</small>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+

@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!--<link rel="stylesheet" href="static/css/add-customer.css">-->
+    <style>
+        body {background-color: black;}
+        input[type=text],
+        input[type=radio],
+        input[type=password] {
+            background-color: black;
+            border: 2px solid black;
+            color: white;}
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: black ;
+            color: white;}
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            border: 2px solid black;
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+            transition: background-color 5000s ease-in-out 0s;}
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        textarea:-webkit-autofill:hover,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus{
+            background-color: black ;}
+        #main{padding-top:70px;padding-left:80px;padding-right:80px;}
+
+        #remark{
+            background-color: black;
+            border: 2px solid black;
+            color: white;}
+
+        #birthday{
+            background-color: black;
+            border: 2px solid black;
+            color: white;}
+        #gener{
+            background-color: black;
+            border: 2px solid black;
+            color: white;}
+
+
+
+    </style>
+    <div class="container ">
+        <div class="header text-muted"></div>
+        <div class="row">
+            <div class="col-3 text-center"></div>
+            <div id="main" class="col-6 text-center">
+                <div class="text-center h2 text-white p-2">Add Customer</div>
+                {% from "_form_maker.html" import render_field %}
+                <form class="container text-muted " method="post" enctype="multipart/form-data">
+                    Now current user is : {{current_user.name}}
+                    <h5>{% include '_messages.html' %}</h5>
+                    <div>
+                        {{ form.hidden_tag() }}
+                        {{ render_field(form.name, class="form-control form-control-sm ", placeholder="Name") }}
+                        {{ render_field(form.contact, class="form-control form-control-sm", placeholder="Contact") }}
+                        {{ render_field(form.gender, type="radio", class="form-control form-control-sm", placeholder="Gender") }}
+                        {{ render_field(form.birthday, type="date", class="form-control form-control-sm", placeholder="Birthday") }}
+                        {{ render_field(form.remark, class="form-control form-control-sm", placeholder="Remark") }}
+                        {{ render_field(form.submit, class="btn btn-outline-info mt-2 btn-sm", value="Submit") }}
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-3 text-center"></div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+{% block footer %}
+{% endblock footer %}
+

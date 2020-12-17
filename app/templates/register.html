@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!--<link rel="stylesheet" href="static/css/register.css">-->
+    <style>
+        body {background-color: black;}
+        input[type=text],
+        input[type=password] {
+            background-color: black;
+            border: 2px solid black;
+            color: white;}
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: black ;
+            color: white;}
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            border: 2px solid black;
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+            transition: background-color 5000s ease-in-out 0s;}
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        textarea:-webkit-autofill:hover,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus{
+            background-color: black ;}
+        #main{padding-top:70px;padding-left:80px;padding-right:80px;}
+    </style>
+    <div class="container ">
+        <div class="header text-muted"></div>
+        <div class="row">
+            <div class="col-3 text-center"></div>
+            <div id="main" class="col-6 text-center">
+                <div class="text-center h1 text-white p-2">Register</div>
+                {% include '_messages.html' %}
+                {% from "_form_maker.html" import render_field %}
+                <form class="container text-muted " method="post" enctype="multipart/form-data">
+                    <div>
+    <!--                        {{ form.csrf_token }}-->
+                        {{ form.hidden_tag() }}
+                        {{ render_field(form.name, class="form-control form-control-sm ", placeholder="Name") }}
+                        {{ render_field(form.account, class="form-control form-control-sm", placeholder="Account") }}
+                        {{ render_field(form.email, class="form-control form-control-sm", placeholder="Email") }}
+                        {{ render_field(form.password, class="form-control form-control-sm", placeholder="Password") }}
+                        {{ render_field(form.confirm, class="form-control form-control-sm", placeholder="Confirm Password") }}
+                        {{ render_field(form.submit, class="btn btn-outline-info mt-2 btn-sm", value="Submit") }}
+                    </div>
+                    <small class="text-muted">
+                        Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+                    </small>
+                </form>
+            </div>
+            <div class="col-3 text-center"></div>
+        </div>
+    </div>
+{% endblock content %}

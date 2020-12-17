@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="icon" href="{{ url_for('static', filename='img/logo.jpg') }}">
+        <style>
+            a:hover {text-decoration: none;}
+        </style>
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        {% block content %}
+        {% endblock content %}
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{{ url_for('static', filename='/js/jquery-3.5.1.slim.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='/js/popper.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='/js/bootstrap.min.js') }}"></script>
+    </body>
+    {% block footer %}
+        <style>
+            #footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding-top:40px;}
+        </style>
+        <footer id="footer" class="footer text-muted ml-4 mt-4">
+            <div class="page-footer">
+                <div class="row">
+                    <div class="col-md-3">
+                        Create by <a href="{{ url_for('about') }}">Vicky Sun</a>
+                    </div>
+                    <div class="col-md-6"></div><br>
+                    <div class="col-md-3 small">
+                        Contact me : <a class="badge badge-dark" href="mailto:sastoria@yahoo.com.tw">sastoria@yahoo.com.tw</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock footer %}
+</html>

@@ -1,0 +1,17 @@
+PIL
+requests
+imgurpython
+pyimgur
+line-bot-sdk
+oauth2client
+flask_sqlalchemy
+flask_restful
+flask_bcrypt
+flask_cors
+Flask
+pymysql
+python-dotenv
+pathlib
+gunicorn
+gspread
+datetime

@@ -1,0 +1,31 @@
+{% macro render_field(form, label=False, label_class="",
+                      label_id="", front_text="",
+                      input_class="mt-1 mb-1")
+%}
+  {% if label %}
+    <dt id="{{ label_id }}" class="{{ label_class }}">
+      {{ form.label }}
+    </dt>
+  {% endif %}
+  <dd class="{{ input_class }}">
+    {% if not form.errors %}
+      {{ front_text }}
+      {{ form(**kwargs)|safe }}
+    {% else %}
+    <div >
+      {{ form(class="form-control form-control-sm is-invalid") }}
+    </div>
+    <div>
+      {% for error in form.errors %}
+        {%if error == 'At least 8 characters long'%}
+          <a class="small" href="{{ url_for('about') }}">
+            {{ error }}
+          </a>
+        {%else%}
+          <small class="small">{{ error }}</small>
+        {%endif%}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </dd>
+{% endmacro %}
